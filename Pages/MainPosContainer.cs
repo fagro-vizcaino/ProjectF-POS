@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ProjectF.Pos.Pages
 {
-    public class MainPosContainer : ComponentBase
+    public class MainPosContainerHandler : ComponentBase
     {
         public ImmutableList<Category> CategoryItems = ImmutableList<Category>.Empty;
         public ImmutableList<MenuItem> MenuItems = ImmutableList<MenuItem>.Empty;

@@ -1,0 +1,13 @@
+﻿@page "/"
+
+<div class="w-full h-screen">
+    <div class="px-2 py-2 grid grid-cols-6 gap-2">
+        @foreach (var item in Enumerable.Range(1, 10))
+        {
+            <div class="h-40 xl:h-40 flex flex-col justify-between rounded-sm bg-gray-600 py-3 px-4 sm:py-2 sm:px-8 xl:py-2 xl:px-15">
+                <span>Mesa @(item)</span>
+                <span>@(new string[] { "Ocupada", "Vacia" }[new Random().Next(0, 2)])</span>
+            </div>
+        }
+    </div>
+</div>

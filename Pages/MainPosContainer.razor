@@ -1,22 +1,11 @@
 ﻿@page "/pos"
-@inherits MainPosContainer
-
+@inherits MainPosContainerHandler
 
 <div class="grid grid-cols-4 gap-2">
     <div class="px-2">
         <div class="grid grid-cols-2 gap-2 2xl:grid-cols-3 xl:gap-4">
             @foreach (var item in CategoryItems)
             {
-                @*<div style='background-color:@($"#{GetItemColor()}")'
-                         class="flex flex-col justify-between px-3 py-2 xl:px-6 xl:py-3 rounded-sm bg-gray-600">
-                        <div class="pt-2">
-                            <div class="mb-2 text-xs text-white xl:text-base xl:font-semibold xl:leading-tight">@item.Name</div>
-                        </div>
-                        <div class="pt-4 xl:pt-6">
-                            <span class="text-xs text-white xl:font-semibold xl:leading-tight">@item.NumberOfProducts items</span>
-                        </div>
-                    </div>*@
-
                 <div style='background-color:@($"#{GetItemColor()}")'
                      class="h-35 xl:h-40 flex flex-col justify-between rounded-sm bg-gray-600 py-2 px-4 sm:py-2 sm:px-8 xl:py-2 xl:px-15">
                     <div class="pt-2">
