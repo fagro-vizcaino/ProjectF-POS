@@ -1,0 +1,18 @@
+﻿@page "/"
+
+<div class="w-full h-screen">
+    <div class="px-8 py-4 grid grid-cols-9 gap-2 lg:grid-cols-10 lg:gap-3">
+        @foreach (var item in GetTableItems())
+        {
+            <div @onclick="OpenPos"
+                class="h-15 w-18 lg:h-20 flex flex-col justify-between rounded-sm @(item.IsBusy ? $"bg-gray-800" : $"bg-gray-600")
+                py-2 px-2 lg:px-4 lg:py-2 lg:px-8 xl:py-2 xl:px-15">
+                <span class="text-xs leading-tight lg:font-medium lg:text-base @(item.IsBusy ? "text-gray-200" : "text-gray-400")">@item.Name</span>
+                <span class="text-xs pt-4 lg:pt-8 lg:text-base @(item.IsBusy ? "text-gray-200" : "text-gray-400")">
+                    @item.NumberOfItemSelected
+                </span>
+                @*<span class="@(item.IsBusy ? "text-gray-200" : "text-gray-400")">@(item.IsBusy ? "Ocupada" : "Vacia")</span>*@
+            </div>
+        }
+    </div>
+</div>

@@ -5,12 +5,12 @@ using System.Collections.Immutable;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ProjectF.Pos.Pages
+namespace ProjectF.Pos.Pages.Pos
 {
-    public class MainPosContainerHandler : ComponentBase
+    public partial class MainPos : ComponentBase
     {
-        public ImmutableList<Category> CategoryItems = ImmutableList<Category>.Empty;
-        public ImmutableList<MenuItem> MenuItems = ImmutableList<MenuItem>.Empty;
+        private ImmutableList<Category> CategoryItems = ImmutableList<Category>.Empty;
+        private ImmutableList<MenuItem> MenuItems = ImmutableList<MenuItem>.Empty;
 
         protected override Task OnInitializedAsync()
         {
