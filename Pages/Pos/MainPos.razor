@@ -2,10 +2,11 @@
 
 <div class="grid grid-cols-4 gap-2">
     <div class="px-2">
-        <div class="grid grid-cols-2 gap-2 2xl:grid-cols-3 xl:gap-4 cursor-pointer">
+        <div class="grid grid-cols-2 gap-2 2xl:grid-cols-3 xl:gap-4" >
             @foreach (var item in CategoryItems)
             {
-                <div style='background-color:@($"#{GetItemColor()}")'
+                <div @onclick="() => OnCategoryFilterHandler(item)"
+                     style='background-color:@($"#{GetItemColor()}")'
                      class="h-35 xl:h-40 flex flex-col justify-between rounded-sm bg-gray-600 py-2 px-4 sm:py-2 sm:px-8 xl:py-2 xl:px-15">
                     <div class="pt-2">
                         <div class="text-xs text-white xl:text-base xl:font-semibold xl:leading-tight mb-2">
@@ -20,28 +21,39 @@
         </div>
     </div>
     <div class="col-span-2">
-        <div class="grid grid-cols-3 gap-2 xl:grid-cols-4 2xl:grid-cols-4 xl:gap-4">
-            @foreach (var item in MenuItems)
-            {
-                <div class="h-35 xl:h-40 flex flex-col justify-between rounded-sm bg-gray-600 py-2 px-4 
+        @if (MenuItems.Any())
+        {
+            <div class="grid grid-cols-3 gap-2 xl:grid-cols-4 2xl:grid-cols-4 xl:gap-4">
+                @foreach (var item in MenuItems)
+                {
+                    <div class="h-35 xl:h-40 flex flex-col justify-between rounded-sm bg-gray-600 py-2 px-4
                         sm:py-2 sm:px-8 xl:py-2 xl:px-15 cursor-pointer">
-                    <div class="pt-2">
-                        <div class="text-xs text-gray-400 xl:text-base xl:font-semibold xl:leading-tight xl:mb-2">
-                            @item.QtySelected
+                        <div class="pt-2">
+                            <div class="text-xs text-gray-400 xl:text-base xl:font-semibold xl:leading-tight xl:mb-2">
+                                @item.QtySelected
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="pt-2">
-                        <div class="text-xs text-white xl:text-base xl:text-white xl:font-semibold xl:leading-tight xl:mb-2">
-                            @item.Name
+                        <div class="pt-2">
+                            <div class="text-xs text-white xl:text-base xl:text-white xl:font-semibold xl:leading-tight xl:mb-2">
+                                @item.Name
+                            </div>
+                        </div>
+                        <div class="pt-4">
+                            <span class="text-xs text-gray-400 xl:text-sm xl:font-semibold">$@item.Price</span>
                         </div>
                     </div>
-                    <div class="pt-4">
-                        <span class="text-xs text-gray-400 xl:text-sm xl:font-semibold">$@item.Price</span>
-                    </div>
-                </div>
-            }
-        </div>
+                }
+            </div>
+        }
+        else
+        {
+            <div class="flex justify-center">
+                <h4 class="font-semibold text-2xl">Seleccione una categoria</h4>
+            </div> 
+            
+        }
+
     </div>
     <div class="px-2">
         @foreach (var item in GetTableItems().Take(3))
@@ -84,21 +96,23 @@
                 </div>
             </div>
         }
+        <hr class="my-3" />
         <div class="grid grid-cols-2 gap-1 mt-2 lg:mt-10">
-               <div class="grid grid-rows-1 gap-y-2 lg:gap-y-3">
-                    <span class="font-medium">Subtotal</span>
-                    <span class="text-xs leading">Impuesto</span>
-                    <span class="text-xs leading">Descuento</span>
-                </div> 
-                <div class="grid grid-rows-1 gap-y-2 lg:gap-y-3 place-self-end text-left">
-                    <span class="">$203.00</span>
-                    <span>$20.00</span>
-                    <span>$223.00</span>
-                </div>
-            
-           <div class="col-span-2 mt-4 lg:mt-5">
-               <MudButton Variant="Variant.Filled" Color="Color.Primary" FullWidth="true">Pagar</MudButton>
-           </div>
+            <div class="grid grid-rows-1 gap-y-2 lg:gap-y-3">
+                <span class="text-xs lg:text-base lg:font-semibold xl:text-lg">Subtotal</span>
+                <span class="text-xs xl:text-base">Impuesto</span>
+                <span class="text-xs xl:text-base">Descuento</span>
+                <span class="font-medium lg:text-lg lg:font-bold 2xl:text-xl">Total</span>
+            </div>
+            <div class="grid grid-rows-1 gap-y-2 lg:gap-y-3 place-self-end text-right ">
+                <span class="text-xs lg:text-base lg:font-semibold tabular-nums">$203.00</span>
+                <span class="text-xs xl:text-base tabular-nums">$20.00</span>
+                <span class="text-xs xl:text-base tabular-nums">$223.00</span>
+                <span class="font-medium lg:text-lg lg:font-bold tabular-nums 2xl:text-xl">$246.00</span>
+            </div>
+            <div class="col-span-2 mt-4 lg:mt-5">
+                <MudButton Variant="Variant.Filled" Color="Color.Primary" FullWidth="true">Pagar</MudButton>
+            </div>
         </div>
     </div>
 </div>
